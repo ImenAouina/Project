@@ -1,0 +1,59 @@
+@model User
+<h1 class="my-5 ps-3">Welcome to Chore Tracker</h1>
+<div class="container d-flex gap-5 mt-4">
+    <div class="col d-flex align-items-center">
+        <div class="card border-0 shadow w-100">
+            <div class="card-title my-3">
+                <h1 class="text-center">Register</h1>
+            </div>
+            <div class="card-body d-flex justify-content-center mb-3">
+                <form action="register/submit" method="post">
+                    <div class="d-flex align-items-center gap-4">
+                        <label asp-for="FirstName" class="col-4"></label>
+                        <input asp-for="FirstName" class="form-control">
+                    </div>
+                    <small class="offset-4 ps-4 text-danger"><span asp-validation-for="FirstName"></span></small>
+
+                    <div class="d-flex align-items-center gap-4 mt-3">
+                        <label asp-for="LastName" class="col-4"></label>
+                        <input asp-for="LastName" class="form-control">
+                    </div>
+                    <small class="offset-4 ps-4 text-danger"><span asp-validation-for="LastName"></span></small>
+
+                    <div class="d-flex align-items-center gap-4 mt-3">
+                        <label asp-for="Email" class="col-4"></label>
+                        <input asp-for="Email" class="form-control">
+                    </div>
+                    <small class="offset-4 ps-4 text-danger"><span asp-validation-for="Email"></span></small>
+
+                    <div class="d-flex align-items-center gap-4 mt-3">
+                        <label asp-for="Password" class="col-4"></label>
+                        <input asp-for="Password" class="form-control">
+                    </div>
+                    <small class="offset-4 ps-4 text-danger"><span asp-validation-for="Password"></span></small>
+
+                    <div class="d-flex align-items-center gap-4 mt-3">
+                        <label asp-for="ConfirmPwd" class="col-4"></label>
+                        <input asp-for="ConfirmPwd" class="form-control">
+                    </div>
+                    <small class="offset-4 ps-4 text-danger text-nowrap"><span
+                            asp-validation-for="ConfirmPwd"></span></small>
+                    <div class="text-center mt-3 d-flex justify-content-end">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col d-flex align-items-center">
+        <div class="card border-0 shadow h-100 w-100">
+            <div class="card-title my-3">
+                <h1 class="text-center">Login</h1>
+            </div>
+            <div class="card-body d-flex justify-content-center mb-3">
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </div>
+</div>

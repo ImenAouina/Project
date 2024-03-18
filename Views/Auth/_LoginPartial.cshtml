@@ -1,0 +1,19 @@
+@model LoginUser
+
+<form action="/login" method="post">
+    <div class="d-flex align-items-center gap-4 mt-3">
+        <label asp-for="LoginEmail" class="col-4"></label>
+        <input asp-for="LoginEmail" class="form-control">
+    </div>
+    <small class="offset-4 ps-4 text-danger"><span asp-validation-for="LoginEmail"></span></small>
+
+    <div class="d-flex align-items-center gap-4 mt-3">
+        <label asp-for="LoginPassword" class="col-4"></label>
+        <input asp-for="LoginPassword" class="form-control">
+    </div>
+    <small class="offset-4 ps-4 text-danger"><span asp-validation-for="LoginPassword"></span></small>
+
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-primary mt-3">Login</button>
+    </div>
+</form>
