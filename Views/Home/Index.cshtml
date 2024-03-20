@@ -1,8 +1,91 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    int currentUserId = (int)Context.Session.GetInt32("UserId");
 }
+@model List<Job>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="d-flex justify-content-between m-1 p-1">
+    <div class="d-inline-flex">
+        <h4>Welcome @Context.Session.GetString("UserName")!</h4>
+        <span class="p-2"></span>
+        <a asp-controller="Auth" asp-action="Logout">Logout</a>
+    </div>
+    <div>
+        <a class="fs-4" asp-action="AddJob">Add A Job</a>
+    </div>
 </div>
+        
+@if (Model.Count == 0)
+{
+    <h3 class="bg-warning text-center">There's still no Jobs</h3>
+}
+else
+{ 
+    <div class="row">
+        <div class="col-8">
+            <table class="table table-bordered table-striped table-hover p-4">
+                <thead class="bg-dark text-light ">
+                    <tr>
+                        <th>Job</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var j in Model)
+                    {
+                        if( !j.UserJobs.Any(uj => uj.UserId == currentUserId))
+                        {
+                        <tr>
+                            <td>@j.Title</td>
+                            <td>@j.Location</td>
+                            <td>
+                                @{
+                                    if (j.Creator?.UserId == currentUserId)
+                                    {
+                                        <a asp-action="ViewJob" asp-route-jobId=@j.JobId>View</a>
+                                        <a asp-action="AddToMyJobs" asp-route-jobId=@j.JobId>add</a> 
+                                        <a asp-action="EditJob" asp-route-jobId=@j.JobId>edit</a>
+                                        <a asp-action="DeleteJob" asp-route-jobId=@j.JobId>cancel</a> 
+                                    } else
+                                    {
+                                        <a asp-action="ViewJob" asp-route-jobId=@j.JobId>View</a>
+                                        <a asp-action="AddToMyJobs" asp-route-jobId=@j.JobId>add</a> 
+                                    }
+                                }    
+                            </td>
+                        </tr>
+                        }   
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4">
+            <table class="table table-bordered table-striped table-hover p-4">
+                <thead class="bg-dark text-light ">
+                    <tr>
+                        <th>My Jobs</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var job in Model)
+                    {
+                        @foreach(var e in job.UserJobs){
+                            if (e.UserId == currentUserId)
+                            {
+                            <tr>
+                                <td>@job.Title</td> 
+                                <td>
+                                    <a asp-action="ViewJob" asp-route-jobId=@job.JobId asp-controller="Home">View</a>
+                                    <a asp-action="DeleteJob" asp-route-jobId=@job.JobId>Done</a>
+                                </td>
+                            </tr>
+                            }   
+                        }    
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+}
