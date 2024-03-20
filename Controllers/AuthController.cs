@@ -47,6 +47,7 @@ public class AuthController : Controller
         _context.SaveChanges();
 
         HttpContext.Session.SetInt32("UserId", newUser.UserId);
+        HttpContext.Session.SetString("UserName", newUser.FirstName);
         return RedirectToAction("Index", "Home");
     }
 
@@ -81,6 +82,7 @@ public class AuthController : Controller
         }
 
         HttpContext.Session.SetInt32("UserId", userInDb.UserId);
+        HttpContext.Session.SetString("UserName", userInDb.FirstName);
         return RedirectToAction("Index", "Home");
     }
 

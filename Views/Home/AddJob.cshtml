@@ -1,0 +1,44 @@
+@{
+    int currentUserId = (int)Context.Session.GetInt32("UserId");
+}
+@model Job
+
+<h3 class="bg-light p-2">Add a Job</h3>
+<hr>
+<div class="col-6 border bordre-2 border-black rounded p-3 bg-light">
+    <form asp-action="CreateJob" asp-controller="Home" method="post">
+    <input type="hidden" value="@currentUserId">
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label asp-for="Title" class="col-form-label">Title</label>
+        </div>
+        <div class="col-md-9">
+            <input asp-for="Title" class="form-control">
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label asp-for="Description" class="col-form-label">Description</label>
+        </div>
+        <div class="col-md-9">
+            <input asp-for="Description" class="form-control">
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <label asp-for="Location" class="col-form-label">Location</label>
+        </div>
+        <div class="col-md-9">
+            <input asp-for="Location" class="form-control">
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-9">
+            <input type="submit" value="Submit" class="btn btn-outline-primary">
+        </div>
+    </div>
+    </form>
+</div> 
