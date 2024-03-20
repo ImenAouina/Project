@@ -1,0 +1,38 @@
+@model Job
+
+<h1 class="my-5 ps-3">Edit Your Job Posting</h1>
+<div class="container">
+    <div class="col d-flex align-items-center">
+        <div class="card border-0 shadow w-100">
+            
+            <div class="card-body d-flex justify-content-center mb-3">
+                <form action="AddJob" method="post">
+                    <input type="hidden" asp-for="UserId" value="@ViewBag.UserId">
+                    <input type="hidden" asp-for="JobId" value="@Model.JobId">
+                    <div class="d-flex align-items-center gap-4">
+                        <label asp-for="Title" class="col-4"></label>
+                        <input asp-for="Title" class="form-control">
+                    </div>
+                    <small class="offset-4 ps-4 text-danger"><span asp-validation-for="Title"></span></small>
+
+                    <div class="d-flex align-items-center gap-4 mt-3">
+                        <label asp-for="Description" class="col-4"></label>
+                        <input asp-for="Description" class="form-control">
+                    </div>
+                    <small class="offset-4 ps-4 text-danger"><span asp-validation-for="Description"></span></small>
+
+                    <div class="d-flex align-items-center gap-4 mt-3">
+                        <label asp-for="Location" class="col-4"></label>
+                        <input asp-for="Location" class="form-control">
+                    </div>
+                    <small class="offset-4 ps-4 text-danger"><span asp-validation-for="Location"></span></small>
+                    <div class="text-center mt-3 d-flex justify-content-end">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                   
+                </form>
+            </div>
+        </div>
+    </div>
+   
+</div>
