@@ -17,7 +17,7 @@ public class HomeController : Controller
         _logger = logger;
         _context = context;
     }
-    
+
     //Dashboard//
     //[HttpGet("dashboard")]
     public IActionResult Index()
@@ -79,7 +79,7 @@ public class HomeController : Controller
         {
             _context.Jobs.Add(newJob);
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
         return View("AddJob");
     }

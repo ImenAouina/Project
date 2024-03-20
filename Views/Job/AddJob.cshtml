@@ -1,0 +1,37 @@
+@{
+    #pragma warning disable CS8629
+    int currentUserId = (int)Context.Session.GetInt32("UserId");
+}
+
+@model Job
+
+<h1 class="my-5 ps-3">Add a Job</h1>
+<div class="container">
+
+    <form class="w-50" action="CreateJob" method="post">
+       <input type="hidden" asp-for="UserId" value="@currentUserId">
+        <div class="mb-3">
+            <label class="form-label" asp-for="Title"></label>
+            <input asp-for="Title" class="form-control">
+        </div>
+        <small class="offset-4 ps-4 text-danger"><span asp-validation-for="Title"></span></small>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Description"></label>
+            <input asp-for="Description" class="form-control">
+        </div>
+        <small class="offset-4 ps-4 text-danger"><span asp-validation-for="Description"></span></small>
+
+        <div class="mb-3">
+            <label class="form-label" asp-for="Location"></label>
+            <input asp-for="Location" class="form-control">
+        </div>
+        <small class="offset-4 ps-4 text-danger"><span asp-validation-for="Location"></span></small>
+        <div class="mb-3">
+            <button class="btn btn-primary">Submit</button>
+        </div>
+
+    </form>
+
+
+</div>

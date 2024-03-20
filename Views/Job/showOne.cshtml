@@ -1,0 +1,13 @@
+@model Job
+
+<div class="Contain-border">
+    <h1>@Model.Title</h1>
+
+    <p>@Model.Description</p>
+
+    <p>Location: @Model.Location</p>
+    <p>Posted By: @Model.Creator</p>
+    <p>Posted On: @Model.CreatedAt.ToString("MMMM dd, yyyy")</p>
+
+    <a asp-action="AddToJobList" asp-controller="Job" asp-route-JobId="@Model.JobId">Add To My Jobs</a>
+</div>

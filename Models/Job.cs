@@ -25,6 +25,7 @@ public class Job
     public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
     // Navigation
+    public int UserId {get;set;} 
     public User? Creator { get; set; }
     public List<UserJob> UserJobs { get; set; } = new List<UserJob>();
 }

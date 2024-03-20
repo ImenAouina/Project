@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
+<<<<<<< HEAD
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chore-tracker", "chore-tracker.csproj", "{0C5B931B-00C5-4EAB-BA7C-8FA9C62930BF}"
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "chore-tracker", "chore-tracker.csproj", "{A2DD971A-8DBB-4786-AB7B-6631695B2FA3}"
+>>>>>>> fcd8df7e5f3d985e02165971ce398b521d8e5aae
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +15,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+<<<<<<< HEAD
 		{0C5B931B-00C5-4EAB-BA7C-8FA9C62930BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C5B931B-00C5-4EAB-BA7C-8FA9C62930BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C5B931B-00C5-4EAB-BA7C-8FA9C62930BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C5B931B-00C5-4EAB-BA7C-8FA9C62930BF}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{A2DD971A-8DBB-4786-AB7B-6631695B2FA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2DD971A-8DBB-4786-AB7B-6631695B2FA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2DD971A-8DBB-4786-AB7B-6631695B2FA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2DD971A-8DBB-4786-AB7B-6631695B2FA3}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> fcd8df7e5f3d985e02165971ce398b521d8e5aae
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+<<<<<<< HEAD
 		SolutionGuid = {FB585E06-42EA-410E-BB01-03A1588CD129}
+=======
+		SolutionGuid = {9274A1D9-E43F-45D0-B899-D80D82FE0E0A}
+>>>>>>> fcd8df7e5f3d985e02165971ce398b521d8e5aae
 	EndGlobalSection
 EndGlobal
