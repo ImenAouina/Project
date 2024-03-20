@@ -12,7 +12,7 @@ public class JobController : Controller
    
     private readonly Context _context;
 
-    public HomeController(Context context)
+    public JobController(Context context)
     {
         _context = context;
     }
@@ -46,7 +46,7 @@ public class JobController : Controller
         return RedirectToAction("Index","Home");
         }
 
-    return View("AddJob");
+        return View("AddJob");
     }
 
     // update Job 
@@ -125,13 +125,13 @@ public class JobController : Controller
     [HttpPost]
     public IActionResult AddToJobList(int JobId)
     {
-    var CurrentUser = HttpContext.Session.GetInt32("UserId");
+    var CurrentUser = HttpContext.Session.GetInt32("UserId") ?? 0;
     var newJob = new UserJob
         {
             UserId = CurrentUser,
             JobId = JobId
         };
-    _context.UserJob.Add(newJob);
+    _context.UserJobs.Add(newJob);
     _context.SaveChanges();
     return RedirectToAction("Index","Home");
     }
