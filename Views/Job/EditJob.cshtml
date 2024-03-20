@@ -3,7 +3,7 @@
 <h1 class="my-5 ps-3">Edit Your Job Posting</h1>
 <div class="container">
 
-    <form class="w-50" action="AddJob" method="post">
+    <form class="w-50" asp-controller="Job" asp-action="UpdateJob" method="post">
         <input type="hidden" asp-for="UserId" value="@ViewBag.UserId">
         <input type="hidden" asp-for="JobId" value="@Model.JobId">
         <div class="mb-3">
