@@ -10,7 +10,7 @@ namespace chore_tracker.Controllers;
 public class JobController : Controller
 {
    
-    private readonly Context _context;
+    private Context _context;
 
     public JobController(Context context)
     {
@@ -26,24 +26,15 @@ public class JobController : Controller
         return View();
     }
 
-    [HttpPost]
+    [HttpPost("CreateJob")]
     public IActionResult CreateJob(Job NewJob)
     {
+         System.Console.WriteLine(NewJob.UserId);
         if (ModelState.IsValid)
         {
         _context.Add(NewJob);
         _context.SaveChanges();
-
-        var userjob = new UserJob
-        {
-            UserId = NewJob.UserId,
-            JobId = NewJob.JobId
-        };
-
-        _context.UserJobs.Add(userjob);
-        _context.SaveChanges();
-
-        return RedirectToAction("Index","Home");
+         return RedirectToAction("Index","Home");
         }
 
         return View("AddJob");
@@ -51,7 +42,17 @@ public class JobController : Controller
 
     // update Job 
 
-    [HttpPost]
+    [HttpGet("edit/{JobId}")]
+    public IActionResult EditJob(int JobId)
+    {
+      if (!IsUserLoggedIn()) return RedirectToIndex();
+      var JobToUpdate = _context.Jobs.FirstOrDefault(j => j.JobId == JobId);
+      var User = HttpContext.Session.GetInt32("UserId");
+      ViewBag.UserId = User;
+      return View(JobToUpdate);
+    }
+
+    [HttpPost("UpdateJob")]
     public IActionResult UpdateJob(Job EditedJob)
     {
     
@@ -65,20 +66,9 @@ public class JobController : Controller
             _context.SaveChanges();
             return RedirectToAction("Index","Home");
         }
-        return RedirectToAction("EditJob");
+        return View("EditJob", EditedJob.JobId);
     }
 
-// Edit Job
-
-    [HttpGet("edit/{JobId}")]
-    public IActionResult EditJob(int JobId)
-    {
-      if (!IsUserLoggedIn()) return RedirectToIndex();
-      var JobToUpdate = _context.Jobs.FirstOrDefault(j => j.JobId == JobId);
-      var User = HttpContext.Session.GetInt32("UserId");
-      ViewBag.UserId = User;
-      return View(JobToUpdate);
-    }
 
 //delete Job
     
@@ -122,7 +112,7 @@ public class JobController : Controller
     }
 
 //Add to my jobs
-    [HttpPost]
+    [HttpGet("AddToJobList")]
     public IActionResult AddToJobList(int JobId)
     {
     var CurrentUser = HttpContext.Session.GetInt32("UserId") ?? 0;

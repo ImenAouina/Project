@@ -15,7 +15,7 @@ public class Job
     public string Title { get; set; }
 
     [Required]
-    [MinLength(10, ErrorMessage = "Title must be at least 10 characters")]
+    [MinLength(10, ErrorMessage = "Description must be at least 10 characters")]
     public string Description { get; set; }
 
     [Required]
