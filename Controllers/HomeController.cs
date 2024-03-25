@@ -58,31 +58,31 @@ public class HomeController : Controller
     }
 
     //Add Job 
-    [HttpGet("addJob")]
-    public IActionResult AddJob()
-    {
-        if (!HttpContext.Session.GetInt32("UserId").HasValue)
-        {
-            return RedirectToAction("Index", "Auth");
-        }
-        return View("AddJob");
-    }
+    // [HttpGet("addJob")]
+    // public IActionResult AddJob()
+    // {
+    //     if (!HttpContext.Session.GetInt32("UserId").HasValue)
+    //     {
+    //         return RedirectToAction("Index", "Auth");
+    //     }
+    //     return View("AddJob");
+    // }
 
-    [HttpPost]
-    public IActionResult CreateJob(Job newJob)
-    {
-        if (!HttpContext.Session.GetInt32("UserId").HasValue)
-        {
-            return RedirectToAction("Index", "Auth");
-        }
-        if (ModelState.IsValid)
-        {
-            _context.Jobs.Add(newJob);
-            _context.SaveChanges();
-            return RedirectToAction("Index","Home");
-        }
-        return View("AddJob");
-    }
+    // [HttpPost]
+    // public IActionResult CreateJob(Job newJob)
+    // {
+    //     if (!HttpContext.Session.GetInt32("UserId").HasValue)
+    //     {
+    //         return RedirectToAction("Index", "Auth");
+    //     }
+    //     if (ModelState.IsValid)
+    //     {
+    //         _context.Jobs.Add(newJob);
+    //         _context.SaveChanges();
+    //         return RedirectToAction("Index","Home"); 
+    //     }
+    //     return View("AddJob");
+    // }
 
     public IActionResult Privacy()
     {

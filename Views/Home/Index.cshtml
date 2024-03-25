@@ -40,7 +40,7 @@ else
                             <td>@j.Location</td>
                             <td>
                                 @{
-                                    if (j.Creator?.UserId == currentUserId)
+                                    if (j.UserId == currentUserId)
                                     {
                                         <a asp-action="ViewJob" asp-route-jobId=@j.JobId>View</a>
                                         <a asp-action="AddToMyJobs" asp-route-jobId=@j.JobId>add</a> 
